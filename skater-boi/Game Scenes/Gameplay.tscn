@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dg5mvxjeoprlw"]
 
-[ext_resource type="Script" uid="uid://1p8ijc4nyi27" path="res://TESTINIT.gd" id="1_685la"]
+[ext_resource type="Script" uid="uid://1p8ijc4nyi27" path="res://Scripts/TESTINIT.gd" id="1_685la"]
 [ext_resource type="Texture2D" uid="uid://bopvol1g2xkgs" path="res://icon.svg" id="2_v64xd"]
+[ext_resource type="Script" uid="uid://b1g07gegjl25f" path="res://Game Scenes/rolling_hill.gd" id="3_aexhd"]
 [ext_resource type="PackedScene" uid="uid://dla78c1kywnb0" path="res://Game Objects/ob-Player.tscn" id="3_vhp02"]
 [ext_resource type="PackedScene" uid="uid://daun4qwlb1mnw" path="res://Game Objects/ob-Typer.tscn" id="4_vhp02"]
 
@@ -46,43 +47,42 @@ _data = {
 &"Rotate": SubResource("Animation_3yadi")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hos14"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1f2cl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_11u7w"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kio88"]
-viewport_path = NodePath("Player/SubViewport")
-
-[node name="Scene Prototype" type="Node3D" unique_id=309273264]
+[node name="GameScene" type="Node3D" unique_id=309273264]
 script = ExtResource("1_685la")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=115029221]
+[node name="RollingHill" type="CSGCylinder3D" parent="." unique_id=115029221]
 transform = Transform3D(-1.9909318e-07, 23.240831, 0, -4.554721, -1.015889e-06, 0, 0, 0, 4.554722, 0, -1.248178, 0)
 material_override = SubResource("StandardMaterial3D_3yadi")
 sides = 20
+script = ExtResource("3_aexhd")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CSGCylinder3D" unique_id=323957552]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RollingHill" unique_id=323957552]
 libraries/ = SubResource("AnimationLibrary_vhp02")
 
 [node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_vhp02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46076846, 1.0162408, 0)
-texture = SubResource("ViewportTexture_hos14")
+texture = SubResource("ViewportTexture_yeto7")
 
-[node name="OBJ_typer" parent="." unique_id=676901588 instance=ExtResource("4_vhp02")]
+[node name="Typer" parent="." unique_id=676901588 instance=ExtResource("4_vhp02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9212997, 1.5128217, 0)
-texture = SubResource("ViewportTexture_1f2cl")
+texture = SubResource("ViewportTexture_11u7w")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1867152151]
 transform = Transform3D(0.9909832, 0, 0.13398619, 0, 1, 0, -0.13398619, 0, 0.9909832, 0.88, 2.097, 2.65)
 fov = 100.0
 near = 0.063
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=870880612]
+[node name="Sunlight" type="DirectionalLight3D" parent="." unique_id=870880612]
 light_color = Color(0.978996, 0.73006856, 0.752828, 1)
 
-[node name="Sprite3D" parent="." unique_id=1821086039 instance=ExtResource("4_vhp02")]
-texture = SubResource("ViewportTexture_kio88")
+[node name="Timer" type="Timer" parent="." unique_id=2140321518]
+wait_time = 2.5
+one_shot = true
 
-[connection signal="animation_finished" from="CSGCylinder3D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="RollingHill/AnimationPlayer" to="RollingHill" method="_on_animation_player_animation_finished"]
