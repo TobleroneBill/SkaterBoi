@@ -4,8 +4,6 @@ extends Sprite3D
 func SetText():
 	pass
 	
-# Set the new string to type out
-func UpdateUI():
-	print('poop')
-	pass
-	
+# Update the User Text
+func UpdateUI(userText):
+	$"SubViewport/Control/PanelContainer/User Text".text = userText
