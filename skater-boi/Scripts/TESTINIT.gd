@@ -4,6 +4,12 @@ extends Node3D
 @onready var Typer = $Typer
 @onready var Cam = $Camera3D
 @onready var Player = $Player
+@onready var ScoreTimer = $Timer
+
+# Scoring
+var Score = 0
+var Multiplier = 1
+@export var AddScore = 100	#score that gets added on a successful spelling
 
 # Test words to use
 var words = [
@@ -17,9 +23,7 @@ var words = [
 var LetterIndex: int = 0
 
 func _ready():
-	#CurrentWord = "Cool"
-	CurrentWord = str(words[1])
-	Typer.Update(CurrentWord)
+	SetNewWord()
 
 #Set the new word to write
 func SetNewWord():
@@ -28,10 +32,11 @@ func SetNewWord():
 	Typer.Update(CurrentWord)
 	LetterIndex = 0
 
-## Gameplay Functions Go here
+## Keyboard Checks
 # Key Checking
 func _input(event):
 	if event is InputEventKey and event.pressed:
+		print(event.as_text_keycode())
 		if event.as_text_keycode() == "":
 			return
 		# If correct letter pressed
@@ -39,7 +44,9 @@ func _input(event):
 			Typer.Update(CurrentWord,CurrentWord.substr(0, LetterIndex+1))
 			if LetterIndex != len(CurrentWord)-1:
 				LetterIndex+=1
-			else:
+			else: ## Correct word completed
+				ScoreTimer.start()
+				Global.GameManager.ChangeGUI("res://Game Scenes/score_gui.tscn")
 				SetNewWord()
 		else:
 			SetNewWord()

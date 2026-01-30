@@ -47,10 +47,10 @@ _data = {
 &"Rotate": SubResource("Animation_3yadi")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_aexhd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ss5vm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_11u7w"]
 viewport_path = NodePath("SubViewport")
 
 [node name="GameScene" type="Node3D" unique_id=309273264]
@@ -67,11 +67,11 @@ libraries/ = SubResource("AnimationLibrary_vhp02")
 
 [node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_vhp02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46076846, 1.0162408, 0)
-texture = SubResource("ViewportTexture_aexhd")
+texture = SubResource("ViewportTexture_yeto7")
 
 [node name="Typer" parent="." unique_id=676901588 instance=ExtResource("4_vhp02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9212997, 1.5128217, 0)
-texture = SubResource("ViewportTexture_ss5vm")
+texture = SubResource("ViewportTexture_11u7w")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1867152151]
 transform = Transform3D(0.9909832, 0, 0.13398619, 0, 1, 0, -0.13398619, 0, 0.9909832, 0.88, 2.097, 2.65)
@@ -80,5 +80,9 @@ near = 0.063
 
 [node name="Sunlight" type="DirectionalLight3D" parent="." unique_id=870880612]
 light_color = Color(0.978996, 0.73006856, 0.752828, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=2140321518]
+wait_time = 2.5
+one_shot = true
 
 [connection signal="animation_finished" from="RollingHill/AnimationPlayer" to="RollingHill" method="_on_animation_player_animation_finished"]
