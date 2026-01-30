@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://daun4qwlb1mnw"]
+
+[ext_resource type="PackedScene" uid="uid://c0l58a5hefwdb" path="res://UI/typing.tscn" id="1_4qrtl"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4qrtl"]
+viewport_path = NodePath("SubViewport")
+
+[node name="OBJ_typer" type="Sprite3D" unique_id=676901588]
+top_level = true
+texture = SubResource("ViewportTexture_4qrtl")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=287242076]
+transparent_bg = true
+size = Vector2i(250, 28)
+
+[node name="Control" parent="SubViewport" unique_id=1089200511 instance=ExtResource("1_4qrtl")]

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d3enun6mjcaw0"]
+
+[ext_resource type="Texture2D" uid="uid://bopvol1g2xkgs" path="res://icon.svg" id="1_5jis0"]
+
+[node name="Test2DScene" type="Node2D" unique_id=2099844465]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1143471616]
+position = Vector2(162, 129)
+scale = Vector2(1.3515625, 1.2734375)
+texture = ExtResource("1_5jis0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1512053]
+anchor_mode = 0

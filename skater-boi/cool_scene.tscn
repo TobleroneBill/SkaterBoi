@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dg5mvxjeoprlw"]
-
-[ext_resource type="Script" uid="uid://1p8ijc4nyi27" path="res://TESTINIT.gd" id="1_685la"]
-
-[node name="Cool Scene" type="Node3D" unique_id=309273264]
-script = ExtResource("1_685la")
