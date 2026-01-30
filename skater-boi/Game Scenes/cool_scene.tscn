@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://1p8ijc4nyi27" path="res://TESTINIT.gd" id="1_685la"]
 [ext_resource type="Texture2D" uid="uid://bopvol1g2xkgs" path="res://icon.svg" id="2_v64xd"]
-[ext_resource type="PackedScene" uid="uid://dla78c1kywnb0" path="res://Game Objects/ob-Player.tscn" id="3_vhp02"]
-[ext_resource type="PackedScene" uid="uid://daun4qwlb1mnw" path="res://Game Objects/ob-Typer.tscn" id="4_vhp02"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yadi"]
 shading_mode = 0
@@ -46,13 +44,13 @@ _data = {
 &"Rotate": SubResource("Animation_3yadi")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vhp02"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3lfg0"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_alggh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ya7rb"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mwn0b"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hos14"]
 viewport_path = NodePath("Player/SubViewport")
 
 [node name="Scene Prototype" type="Node3D" unique_id=309273264]
@@ -66,13 +64,13 @@ sides = 20
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CSGCylinder3D" unique_id=323957552]
 libraries/ = SubResource("AnimationLibrary_vhp02")
 
-[node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_vhp02")]
+[node name="Player" parent="." unique_id=273068932]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46076846, 1.0162408, 0)
-texture = SubResource("ViewportTexture_vhp02")
+texture = SubResource("ViewportTexture_3lfg0")
 
-[node name="OBJ_typer" parent="." unique_id=676901588 instance=ExtResource("4_vhp02")]
+[node name="OBJ_typer" parent="." unique_id=676901588]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9212997, 1.5128217, 0)
-texture = SubResource("ViewportTexture_alggh")
+texture = SubResource("ViewportTexture_ya7rb")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1867152151]
 transform = Transform3D(0.9909832, 0, 0.13398619, 0, 1, 0, -0.13398619, 0, 0.9909832, 0.88, 2.097, 2.65)
@@ -82,7 +80,7 @@ near = 0.063
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=870880612]
 light_color = Color(0.978996, 0.73006856, 0.752828, 1)
 
-[node name="Sprite3D" parent="." unique_id=1821086039 instance=ExtResource("4_vhp02")]
-texture = SubResource("ViewportTexture_mwn0b")
+[node name="Sprite3D" parent="." unique_id=1821086039]
+texture = SubResource("ViewportTexture_hos14")
 
 [connection signal="animation_finished" from="CSGCylinder3D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
