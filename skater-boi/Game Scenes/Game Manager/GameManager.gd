@@ -10,7 +10,7 @@ var currentgui
 
 func _ready():
 	Global.GameManager = self
-	Change2D("res://Game Scenes/test_level_switch.tscn")
+	Change3D("res://Game Scenes/Gameplay.tscn")
 	
 # Load 3D Level Scene
 func Change3D(NewScene: String) -> void:
