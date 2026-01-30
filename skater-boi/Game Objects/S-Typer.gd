@@ -4,3 +4,7 @@ extends Sprite3D
 func SetText():
 	pass
 	
+# Set the new string to type out
+func UpdateUI():
+	pass
+	
