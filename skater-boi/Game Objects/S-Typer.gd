@@ -6,5 +6,6 @@ func SetText():
 	
 # Set the new string to type out
 func UpdateUI():
+	print('poop')
 	pass
 	
