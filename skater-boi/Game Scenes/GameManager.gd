@@ -10,19 +10,25 @@ var currentgui
 
 func _ready():
 	Global.GameManager = self
+	Change2D("res://Game Scenes/test_level_switch.tscn")
 	
-# Load New Scene
+# Load 3D Level Scene
 func Change3D(NewScene: String) -> void:
+	remove_child(current3d)
 	var new = load(NewScene).instantiate()
 	world3d.add_child(new)
 	current3d = new
 
-# Load New Scene
+# Load 2D Level Scene
 func Change2D(NewScene: String) -> void:
+	remove_child(current2d)
 	var new = load(NewScene).instantiate()
 	world2d.add_child(new)
 	current2d = new
 
-# Load New Scene
-func ChangeGUI():
-	pass
+# Load GUI Scene
+func ChangeGUI(NewScene: String) -> void:
+	remove_child(currentgui)
+	var new = load(NewScene).instantiate()
+	currentgui.add_child(new)
+	currentgui = new

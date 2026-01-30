@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c6wp5j780rnu4" path="res://Game Scenes/GameManager.gd" id="1_vqhgs"]
 
-[node name="GameManager" type="Node" unique_id=355234343]
+[node name="GameManager" type="Node" unique_id=355234343 node_paths=PackedStringArray("world3d", "world2d", "GUI")]
 script = ExtResource("1_vqhgs")
+world3d = NodePath("3d")
+world2d = NodePath("2d")
+GUI = NodePath("GUI")
 
 [node name="3d" type="Node3D" parent="." unique_id=1732138480]
 
