@@ -16,3 +16,5 @@ transparent_bg = true
 size = Vector2i(250, 28)
 
 [node name="Control" parent="SubViewport" unique_id=1089200511 instance=ExtResource("1_4qrtl")]
+
+[editable path="SubViewport/Control"]
