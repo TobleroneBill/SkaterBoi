@@ -1,4 +1,7 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://d14xbymdr1atj"]
 
+[ext_resource type="FontFile" uid="uid://o0cgjtt308ru" path="res://UI/Fonts/Orbitron-VariableFont_wght.ttf" id="1_4bj5k"]
+
 [resource]
+font = ExtResource("1_4bj5k")
 font_color = Color(0.31801948, 0.3180199, 0.31801963, 1)
