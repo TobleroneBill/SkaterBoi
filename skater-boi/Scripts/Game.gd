@@ -61,6 +61,9 @@ func _ready():
 
 #Set the new word to write
 func SetNewWord():
+	var newword = wordlist.pick_random()
+	while newword == CurrentWord:
+		newword = wordlist.pick_random()
 	CurrentWord = wordlist.pick_random()
 	Typer.Update(CurrentWord)
 	LetterIndex = 0
