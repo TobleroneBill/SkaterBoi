@@ -4,29 +4,36 @@ extends Node3D
 @onready var Typer = $Typer			# what shows the typing words
 @onready var Cam = $Camera3D		# camera effects
 @onready var Player = $Player
-@onready var ScoreTimer = $Timer 	# how long until the next word
 
+# When to swtich wordlists
 @export var mediumThreshold: int = 5
 @export var hardThreshold: int = 15
 @export var extremeThreshold: int = 30
-
 
 # Scoring
 var Score: float = 0
 var Multiplier: int = 1
 var AddScore: int = 100	#score that gets added on a successful spelling
 var CorrectStreak: int = 0
+var difficulty = "easy"
 
+# Timer Settings
+#@onready var nextTimer = $nextTimer 	# how long until the next word
+@onready var wordTimer = $wordTimer 	# how long until to completeword
+
+@export var timervarianceDelta = 1 # the amount of randomized add/minus time to make things less predictable
+
+@export var wtMinMax = {
+	"min": 1,
+	"max": 4
+}
+@export var ntMinMax = {
+	"min": 2,
+	"max": 5
+}
+
+# the pool of words we draw from
 var wordlist
-
-# Test words to use
-#var words = [
-	#"cool",
-	#"radical",
-	#"guns",
-	#"dmc",
-	#"gary"
-#]
 
 # Letter variables
 @export var CurrentWord: String
@@ -46,14 +53,27 @@ func changewordlist(difficulty):
 
 func _ready():
 	changewordlist("easy")
+	#nextTimer.start(ntMinMax["max"])
 	SetNewWord()
 
 #Set the new word to write
 func SetNewWord():
 	CurrentWord = wordlist.pick_random()
-	print('new word is: ' + CurrentWord)
+	#print('new word is: ' + CurrentWord)
 	Typer.Update(CurrentWord)
 	LetterIndex = 0
+	wordTimer.start(6)
+		
+
+func _physics_process(delta):
+	#print($wordTimer.time_left)
+	# check for normal GUI, and if so update its text
+	if len(Global.GameManager.GUI.get_children()) == 1:
+		if Global.GameManager.GUI.get_children()[0].has_method("UpdateBoth"):
+			Global.GameManager.GUI.get_children()[0].UpdateBoth(Score,Multiplier)
+			Global.GameManager.GUI.get_children()[0].UpdateTimer(int(wordTimer.time_left))
+		
+
 
 ## Keyboard Checks
 # Key Checking
@@ -68,17 +88,31 @@ func _input(event):
 			if LetterIndex != len(CurrentWord)-1:
 				LetterIndex+=1
 			else: ## Correct word completed
-				ScoreTimer.start()
+				wordTimer.start(wtMinMax["max"])
 				Score += (AddScore * Multiplier)
 				CorrectStreak+=1 
 				if CorrectStreak == Multiplier:
+					match Multiplier:
+						mediumThreshold:
+							changewordlist("medium")
+						hardThreshold:
+							changewordlist("hard")
+						extremeThreshold:
+							changewordlist("extreme")
 					# increase multiplier and reset the streak
 					Multiplier += 1
 					CorrectStreak = 0
-				SetNewWord()
+				SetNewWord() # start the next word & restart timer
 				print("Score: "+ str(Score))
 		else: # failed
-			SetNewWord()
-			# reset multiplier on failure
+			wordTimer.start()
+			# reset multiplier & go back to easy words on failure 
 			CorrectStreak = 0
 			Multiplier = 1
+			changewordlist("easy")
+			SetNewWord() # start the next word after the max timeout
+
+
+func _on_word_timer_timeout():
+	print("timer ran out")
+	SetNewWord() # start the next word straight away
