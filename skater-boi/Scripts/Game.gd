@@ -46,15 +46,19 @@ func changewordlist(difficulty):
 	match difficulty:
 		"easy":
 			wordlist = Global.GameManager.wordlist.easy
+			wordtimerReset = 4
 		"medium":
 			wordlist = Global.GameManager.wordlist.medium
+			wordtimerReset = 4
 		"hard":
 			wordlist = Global.GameManager.wordlist.hard
+			wordtimerReset = 5
 		"extreme":
 			wordlist = Global.GameManager.wordlist.extreme
+			wordtimerReset = 7
 
 func _ready():
-	changewordlist("easy")
+	changewordlist("extreme")
 	SetNewWord()
 
 #Set the new word to write
@@ -133,10 +137,12 @@ func _input(event):
 			changewordlist("easy")
 
 func _on_word_timer_timeout():
-	print("timer ran out")
+	newwordTimer.start(wordtimerReset)
+	changewordlist("easy")
+	Typer.Fadeout()
+	cantype = false
 	hit()
-	if cantype:
-		SetNewWord() # start the next word straight away
+	print("timer ran out")
 
 func _on_newword_timer_timeout():
 	SetNewWord() # start the next word after the max timeout
