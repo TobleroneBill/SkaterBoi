@@ -18,6 +18,7 @@ anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_kkm3p"]
 font = ExtResource("2_nqm66")
+font_size = 32
 
 [sub_resource type="Theme" id="Theme_nqm66"]
 

@@ -52,7 +52,22 @@ var easy = [
 'crack',
 'meth',
 'dope',
-'harold']
+'harold',
+'knack',
+'morbius',
+'smb2',
+'yo momma',
+'kumar',
+'chump',
+'chumpette',
+'pimpmobile',
+'bite',
+'shiny',
+'daffodil',
+'ass',
+'mtn dew',
+'doritos',
+'baja blast']
 
 var medium = [
 'radicool',
@@ -107,7 +122,18 @@ var medium = [
 'fifa street',
 'guatamala',
 'minky mouse',
-'jungle2jungle'
+'jungle2jungle',
+'donkey kong',
+'copy that',
+'copy that',
+'copy that',
+'dorans ring',
+'grunka lunka',
+'blackjack',
+'hookers',
+'cross the street',
+'spirit blast',
+'cuberella'
 ]
 
 var hard = [
@@ -164,16 +190,27 @@ var hard = [
 'unobtainium',
 'municipal housing',
 'jungle two jungle',
-'level 4 naughty lister'
+'level 4 naughty lister',
+'super mario bruddas two',
+'dorans new groove',
+'who is yo daddy',
+'knack 2',
+'kill a man jar o',
+'cubeiverse',
+'in cube we trust'
 ]
 
 var extreme = [
-'birds of prey and the fantabulous emancipation of one harley quinn',
+'birds of prey and the fantabulous parallelogram',
 'japanese imported nintendo 64',
 'device ran into a problem and needs to restart',
 'ultra mega extreme zumba 9000',
 'wicky wild west will smith',
 'ham ham ham ham ham ham ham ham',
 'john madden duo cd football 93',
-'methamphetamines'
+'methamphetamines',
+'merry christmas xbox',
+'bowsers big bean burrito',
+'star wars super bombad racing',
+'harold n kumar white castle',
 ]

@@ -7,12 +7,10 @@ extends Sprite3D
 
 # Set the new string to type out
 func Update(bg,fg=""):
-	#print('input Text:' + fg)
 	basetext.text = bg
 	usertext.text = fg
 
 func setProgress(percentage):
-	#print(percentage)
 	percentageTime.value = percentage
 
 # Animation Functions
