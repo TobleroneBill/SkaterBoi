@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dla78c1kywnb0"]
+
+[ext_resource type="PackedScene" uid="uid://d3enun6mjcaw0" path="res://Game Scenes/test_2d_scene.tscn" id="1_cemgt"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cemgt"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Player" type="Sprite3D" unique_id=273068932]
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_cemgt")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1882462705]
+transparent_bg = true
+
+[node name="Test2DScene" parent="SubViewport" unique_id=2099844465 instance=ExtResource("1_cemgt")]

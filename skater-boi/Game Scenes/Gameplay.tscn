@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://1p8ijc4nyi27" path="res://Scripts/Game.gd" id="1_685la"]
 [ext_resource type="Texture2D" uid="uid://dy66kacyfc25y" path="res://Textures/TestTilesprite.png" id="2_aexhd"]
 [ext_resource type="Script" uid="uid://b1g07gegjl25f" path="res://Game Scenes/rolling_hill.gd" id="3_aexhd"]
-[ext_resource type="PackedScene" uid="uid://dla78c1kywnb0" path="res://Game Objects/ob-Player.tscn" id="3_vhp02"]
+[ext_resource type="PackedScene" path="res://Game Objects/ob-Player.tscn" id="3_vhp02"]
 [ext_resource type="PackedScene" uid="uid://daun4qwlb1mnw" path="res://Game Objects/ob-Typer.tscn" id="4_vhp02"]
 [ext_resource type="AudioStream" uid="uid://b48qmpb7rcyen" path="res://Audio/Sounds/Clicks/Click1.wav" id="6_ss5vm"]
 [ext_resource type="AudioStream" uid="uid://pgawcdrqtp8d" path="res://Audio/Music/Test Music.wav" id="7_yeto7"]
