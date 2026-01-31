@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dhh25oq4bwetu"]
+
+[ext_resource type="Script" uid="uid://c6wp5j780rnu4" path="res://Game Scenes/Game Manager/GameManager.gd" id="1_vqhgs"]
+
+[node name="GameManager" type="Node" unique_id=355234343 node_paths=PackedStringArray("world3d", "world2d", "GUI")]
+script = ExtResource("1_vqhgs")
+world3d = NodePath("3d")
+world2d = NodePath("2d")
+GUI = NodePath("GUI")
+
+[node name="3d" type="Node3D" parent="." unique_id=1732138480]
+
+[node name="2d" type="Node2D" parent="." unique_id=492194803]
+
+[node name="GUI" type="Control" parent="." unique_id=242749231]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,21 +1,23 @@
 [gd_scene format=3 uid="uid://c0l58a5hefwdb"]
 
 [ext_resource type="LabelSettings" uid="uid://d14xbymdr1atj" path="res://Materials/Base Text.tres" id="1_1h632"]
+[ext_resource type="FontFile" uid="uid://o0cgjtt308ru" path="res://UI/Fonts/Orbitron-VariableFont_wght.ttf" id="2_nqm66"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bj4i4"]
-bg_color = Color(0, 0, 0, 1)
-border_color = Color(1, 1, 1, 1)
+bg_color = Color(0, 0, 0, 0.54901963)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
 anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_kkm3p"]
+font = ExtResource("2_nqm66")
 
 [node name="Control" type="Control" unique_id=1089200511]
 layout_mode = 3
@@ -23,19 +25,21 @@ anchors_preset = 0
 size_flags_horizontal = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=115613970]
-custom_minimum_size = Vector2(7.02, 0)
-layout_mode = 1
-offset_right = 80.0
+clip_contents = true
+layout_mode = 0
+offset_right = 1.0
 offset_bottom = 23.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bj4i4")
 
-[node name="Base Text" type="Label" parent="PanelContainer" unique_id=1211187502]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer" unique_id=835822872]
 layout_mode = 2
-text = "Input Text"
+
+[node name="Base Text" type="Label" parent="PanelContainer/PanelContainer" unique_id=1211187502]
+layout_mode = 2
 label_settings = ExtResource("1_1h632")
 vertical_alignment = 1
 
-[node name="User Text" type="Label" parent="PanelContainer" unique_id=1738332268]
+[node name="User Text" type="Label" parent="PanelContainer/PanelContainer" unique_id=1738332268]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_kkm3p")
 vertical_alignment = 1
