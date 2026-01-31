@@ -4,6 +4,8 @@ extends Node3D
 @onready var Typer = $Typer			# what shows the typing words
 @onready var Cam = $Camera3D		# camera effects
 @onready var Player = $Player
+@onready var Soundplayer = $SoundEffects
+
 
 # When to swtich wordlists
 @export var mediumThreshold: int = 5
@@ -20,6 +22,8 @@ var difficulty = "easy"
 # Timer Settings
 #@onready var nextTimer = $nextTimer 	# how long until the next word
 @onready var wordTimer = $wordTimer 	# how long until to completeword
+@onready var newwordTimer = $newwordTimer 	# how long until to completeword
+var cantype = true
 
 @export var timervarianceDelta = 1 # the amount of randomized add/minus time to make things less predictable
 
@@ -72,22 +76,28 @@ func _physics_process(delta):
 		if Global.GameManager.GUI.get_children()[0].has_method("UpdateBoth"):
 			Global.GameManager.GUI.get_children()[0].UpdateBoth(Score,Multiplier)
 			Global.GameManager.GUI.get_children()[0].UpdateTimer(int(wordTimer.time_left))
-		
 
+func typingsound():
+	#Soundplayer.stream = AudioStream("res://Audio/Sounds/Clicks/Click1.wav")
+	Soundplayer.stream = Global.type_sounds.pick_random()
+	Soundplayer.pitch_scale = randf_range(.8,1.2)
+	Soundplayer.play()
 
 ## Keyboard Checks
 # Key Checking
 func _input(event):
-	if event is InputEventKey and event.pressed:
+	
+	if event is InputEventKey and event.pressed and cantype:
 		#print(event.as_text_keycode())
 		if event.as_text_keycode() == "":
 			return
 		# If correct letter pressed
 		if CurrentWord[LetterIndex].to_lower() == event.as_text_keycode().to_lower() or CurrentWord[LetterIndex].to_lower() in [" "]:
+			typingsound()
 			Typer.Update(CurrentWord,CurrentWord.substr(0, LetterIndex+1))
 			if LetterIndex != len(CurrentWord)-1:
 				LetterIndex+=1
-			else: ## Correct word completed
+			else: ## !!!Correct!!!
 				wordTimer.start(wtMinMax["max"])
 				Score += (AddScore * Multiplier)
 				CorrectStreak+=1 
@@ -104,15 +114,30 @@ func _input(event):
 					CorrectStreak = 0
 				SetNewWord() # start the next word & restart timer
 				print("Score: "+ str(Score))
-		else: # failed
-			wordTimer.start()
+		else: # !!!failed!!!
+			newwordTimer.start(3)
+			cantype = false
+			### Add a game end fail here if the player gets the word wrong
+			#Typer.visible = false
+			Typer.Fadeout()
 			# reset multiplier & go back to easy words on failure 
 			CorrectStreak = 0
 			Multiplier = 1
 			changewordlist("easy")
-			SetNewWord() # start the next word after the max timeout
 
 
 func _on_word_timer_timeout():
 	print("timer ran out")
-	SetNewWord() # start the next word straight away
+	if cantype:
+		SetNewWord() # start the next word straight away
+
+
+func _on_newword_timer_timeout():
+	SetNewWord() # start the next word after the max timeout
+	cantype = true
+	Typer.reset()
+	
+
+
+func _on_music_finished():
+	$Music.play()

@@ -8,3 +8,10 @@ func Update(bg,fg=""):
 	#print('input Text:' + fg)
 	basetext.text = bg
 	usertext.text = fg
+
+# Animation Functions
+func Fadeout():
+	$AnimationPlayer.play("HideTyper")
+
+func reset():
+	$AnimationPlayer.play("Show Typer")
