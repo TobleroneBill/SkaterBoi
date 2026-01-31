@@ -27,10 +27,8 @@ var cantype = true
 
 @export var timervarianceDelta = 1 # the amount of randomized add/minus time to make things less predictable
 
-@export var wtMinMax = {
-	"min": 1,
-	"max": 4
-}
+@export var wordtimerReset = 4
+
 @export var ntMinMax = {
 	"min": 2,
 	"max": 5
@@ -67,7 +65,7 @@ func SetNewWord():
 	CurrentWord = wordlist.pick_random()
 	Typer.Update(CurrentWord)
 	LetterIndex = 0
-	wordTimer.start(6)
+	wordTimer.start(wordtimerReset)
 
 func _physics_process(delta):
 	# check for normal GUI, and if so update its text
@@ -76,6 +74,10 @@ func _physics_process(delta):
 			Global.GameManager.GUI.get_children()[0].UpdateBoth(Score,Multiplier)
 			Global.GameManager.GUI.get_children()[0].UpdateTimer(int(wordTimer.time_left))
 			Global.GameManager.GUI.get_children()[0].UpdateLife(int(lives))
+	
+	# Update the Typer Timer
+	var percentageTime = (wordTimer.time_left / wordtimerReset) * 100
+	Typer.setProgress(percentageTime)
 
 func typingsound():
 	Soundplayer.stream = Global.type_sounds.pick_random()
@@ -87,7 +89,6 @@ func hit():
 	if lives <= 0:
 		Global.GameManager.Change3D("res://Game Scenes/LoseScene/lose_bg.tscn")
 		Global.GameManager.ChangeGUI("res://Game Scenes/LoseScene/failscreen.tscn")
-		
 		print('died')
 
 ## Keyboard Checks
@@ -103,7 +104,7 @@ func _input(event):
 			if LetterIndex != len(CurrentWord)-1:
 				LetterIndex+=1
 			else: ## !!!Correct!!!
-				wordTimer.start(wtMinMax["max"])
+				wordTimer.start(wordtimerReset)
 				Score += (AddScore * Multiplier)
 				CorrectStreak+=1 
 				if CorrectStreak == Multiplier:
@@ -121,13 +122,14 @@ func _input(event):
 				print("Score: "+ str(Score))
 		else: # !!!failed!!!
 			# Start the reset timer & disable typing
-			newwordTimer.start(3)
+			newwordTimer.start(wordtimerReset)
 			cantype = false
 			Typer.Fadeout()
 			# reset multiplier & go back to easy words on failure 
 			CorrectStreak = 0
 			Multiplier = 1
 			hit()
+			wordTimer.stop()
 			changewordlist("easy")
 
 func _on_word_timer_timeout():
