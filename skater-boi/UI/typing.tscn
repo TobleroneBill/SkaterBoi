@@ -18,6 +18,12 @@ anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_kkm3p"]
 font = ExtResource("2_nqm66")
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_nqm66"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpt2q"]
+bg_color = Color(0.063671574, 0.75783324, 7.70092e-07, 1)
 
 [node name="Control" type="Control" unique_id=1089200511]
 layout_mode = 3
@@ -27,8 +33,8 @@ size_flags_horizontal = 4
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=115613970]
 clip_contents = true
 layout_mode = 0
-offset_right = 1.0
-offset_bottom = 23.0
+offset_right = 13.0
+offset_bottom = 34.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bj4i4")
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer" unique_id=835822872]
@@ -43,3 +49,10 @@ vertical_alignment = 1
 layout_mode = 2
 label_settings = SubResource("LabelSettings_kkm3p")
 vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer" unique_id=1619124977]
+layout_mode = 2
+theme = SubResource("Theme_nqm66")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wpt2q")
+value = 50.0
+show_percentage = false
