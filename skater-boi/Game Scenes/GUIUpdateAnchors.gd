@@ -3,7 +3,7 @@ extends Control
 @onready var scoreLabel = $HBoxContainer/ScoreVBOX/ScorePlayer
 @onready var multLabel = $HBoxContainer/MultVbox/MultPlayer
 @onready var timeLabel = $HBoxContainer/TimerVbox/TimerPlayer
-
+@onready var lifeLabel = $HBoxContainer/LifeVbox/lifePlayer
 
 func _ready():
 	offset_left = 0
@@ -19,6 +19,9 @@ func UpdateMult(newmult):
 
 func UpdateTimer(newtime):
 	timeLabel.text = str(newtime)
+	
+func UpdateLife(newlife):
+	lifeLabel.text = str(newlife)
 
 func UpdateBoth(newscore,newmult):
 	UpdateScore(newscore)

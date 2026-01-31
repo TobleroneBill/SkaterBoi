@@ -21,6 +21,16 @@ offset_right = 45.0
 offset_bottom = 50.0
 grow_horizontal = 2
 
+[node name="LifeVbox" type="VBoxContainer" parent="HBoxContainer" unique_id=700237836]
+layout_mode = 2
+
+[node name="lifeLabel" type="Label" parent="HBoxContainer/LifeVbox" unique_id=1534690049]
+layout_mode = 2
+text = "Lives"
+
+[node name="lifePlayer" type="Label" parent="HBoxContainer/LifeVbox" unique_id=213767677]
+layout_mode = 2
+
 [node name="TimerVbox" type="VBoxContainer" parent="HBoxContainer" unique_id=582231576]
 layout_mode = 2
 

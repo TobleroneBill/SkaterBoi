@@ -50,10 +50,10 @@ _data = {
 &"Rotate": SubResource("Animation_3yadi")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ss5vm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_11u7w"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_aexhd"]
@@ -111,9 +111,9 @@ _data = {
 
 [node name="GameScene" type="Node3D" unique_id=309273264]
 script = ExtResource("1_685la")
-mediumThreshold = 3
-hardThreshold = 10
-extremeThreshold = 20
+hardThreshold = 7
+extremeThreshold = 12
+lives = 4
 
 [node name="RollingHill" type="CSGCylinder3D" parent="." unique_id=115029221]
 transform = Transform3D(-1.9909318e-07, 23.240831, 0, -4.554721, -1.015889e-06, 0, 0, 0, 4.554722, 0, -1.248178, 0)
@@ -126,11 +126,11 @@ libraries/ = SubResource("AnimationLibrary_vhp02")
 
 [node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_vhp02")]
 transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0.87, 1.751, 0.955)
-texture = SubResource("ViewportTexture_ss5vm")
+texture = SubResource("ViewportTexture_yeto7")
 
 [node name="Typer" parent="." unique_id=676901588 instance=ExtResource("4_vhp02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.601, 1.843, 0)
-texture = SubResource("ViewportTexture_yeto7")
+texture = SubResource("ViewportTexture_11u7w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Typer" unique_id=1492768204]
 libraries/ = SubResource("AnimationLibrary_yeto7")
