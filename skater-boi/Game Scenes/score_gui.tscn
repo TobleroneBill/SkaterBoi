@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bis10o6va5s7y"]
 
+[ext_resource type="Script" uid="uid://nr5lxcqdrqip" path="res://Game Scenes/GUIUpdateAnchors.gd" id="1_q7jbj"]
+
 [node name="ScoreGUI" type="Control" unique_id=405849922]
 layout_mode = 3
 anchors_preset = 15
@@ -7,18 +9,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_q7jbj")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1795186334]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=15899561]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -61.0
-grow_horizontal = 0
-grow_vertical = 2
-max_value = 250.0
-step = 1.0
-value = 50.0
-fill_mode = 3
-show_percentage = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_right = 45.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="TimerVbox" type="VBoxContainer" parent="HBoxContainer" unique_id=582231576]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="HBoxContainer/TimerVbox" unique_id=494700573]
+layout_mode = 2
+text = "Timer"
+
+[node name="TimerPlayer" type="Label" parent="HBoxContainer/TimerVbox" unique_id=1497111196]
+layout_mode = 2
+
+[node name="ScoreVBOX" type="VBoxContainer" parent="HBoxContainer" unique_id=941686724]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/ScoreVBOX" unique_id=793234032]
+layout_mode = 2
+text = "Score"
+
+[node name="ScorePlayer" type="Label" parent="HBoxContainer/ScoreVBOX" unique_id=301841165]
+layout_mode = 2
+
+[node name="MultVbox" type="VBoxContainer" parent="HBoxContainer" unique_id=2000335886]
+layout_mode = 2
+
+[node name="MultLabel" type="Label" parent="HBoxContainer/MultVbox" unique_id=834596712]
+layout_mode = 2
+text = "Multiplier"
+
+[node name="MultPlayer" type="Label" parent="HBoxContainer/MultVbox" unique_id=590099083]
+layout_mode = 2

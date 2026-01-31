@@ -13,7 +13,7 @@ script = ExtResource("1_qmngm")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=287242076]
 transparent_bg = true
-size = Vector2i(600, 28)
+size = Vector2i(600, 35)
 
 [node name="Control" parent="SubViewport" unique_id=1089200511 instance=ExtResource("1_4qrtl")]
 

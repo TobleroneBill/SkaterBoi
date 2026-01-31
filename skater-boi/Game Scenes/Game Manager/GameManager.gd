@@ -13,8 +13,9 @@ var wordlist = load("res://Scripts/WordLists/words.tres")
 
 func _ready():
 	Global.GameManager = self
-	currentgui = GUI
 	Change3D("res://Game Scenes/Gameplay.tscn")
+	ChangeGUI("res://Game Scenes/score_gui.tscn")
+	
 	print(wordlist.easy)
 	print(wordlist.medium)
 	print(wordlist.hard)
@@ -37,7 +38,8 @@ func Change2D(NewScene: String) -> void:
 
 # Load GUI Scene
 func ChangeGUI(NewScene: String) -> void:
-	remove_child(currentgui)
+	if GUI.get_child_count()>0:
+		remove_child(currentgui)
 	var new = load(NewScene).instantiate()
-	currentgui.add_child(new)
+	GUI.add_child(new)
 	currentgui = new
