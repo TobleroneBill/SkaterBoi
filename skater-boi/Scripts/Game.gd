@@ -90,6 +90,8 @@ func typingsound():
 
 func hit():
 	lives -= 1
+	Global.GameManager.GUI.get_children()[0].damage(lives)
+	
 	if lives <= 0:
 		Global.GameManager.Change3D("res://Game Scenes/LoseScene/lose_bg.tscn")
 		Global.GameManager.ChangeGUI("res://Game Scenes/LoseScene/failscreen.tscn")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsl5g3aqxbchp"]
 
-[ext_resource type="Texture2D" uid="uid://b6hj603wfevkx" path="res://Textures/Skateboard.png" id="1_wnp4e"]
+[ext_resource type="Texture2D" uid="uid://b6hj603wfevkx" path="res://Textures/Skateboard/Skateboard.png" id="1_wnp4e"]
 
 [node name="Sprite2D4" type="Sprite2D" unique_id=695214684]
 position = Vector2(96, 31)
