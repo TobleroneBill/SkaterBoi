@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bis10o6va5s7y"]
 
 [ext_resource type="Script" uid="uid://nr5lxcqdrqip" path="res://Game Scenes/GUIUpdateAnchors.gd" id="1_q7jbj"]
-[ext_resource type="Texture2D" uid="uid://b6hj603wfevkx" path="res://Textures/Skateboard.png" id="2_1jaxx"]
+[ext_resource type="PackedScene" uid="uid://dsl5g3aqxbchp" path="res://Textures/Skatboard.tscn" id="2_1jaxx"]
 
 [node name="ScoreGUI" type="Control" unique_id=405849922]
 layout_mode = 3
@@ -11,28 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q7jbj")
-
-[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=214482070]
-position = Vector2(1157, 275)
-texture = ExtResource("2_1jaxx")
-region_enabled = true
-region_rect = Rect2(0, 0, 192, 64)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D4" unique_id=157528068]
-texture = ExtResource("2_1jaxx")
-region_enabled = true
-region_rect = Rect2(0, 128, 192, 64)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D4" unique_id=906294880]
-texture = ExtResource("2_1jaxx")
-region_enabled = true
-region_rect = Rect2(0, 64, 192, 64)
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D4" unique_id=2128550619]
-position = Vector2(0, 1)
-texture = ExtResource("2_1jaxx")
-region_enabled = true
-region_rect = Rect2(0, 192, 192, 64)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=15899561]
 layout_mode = 1
@@ -83,3 +61,25 @@ text = "Multiplier"
 
 [node name="MultPlayer" type="Label" parent="HBoxContainer/MultVbox" unique_id=590099083]
 layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1603668423]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 73.62
+offset_right = -86.0
+offset_bottom = 135.62006
+grow_horizontal = 0
+scale = Vector2(2, 2)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="AspectRatioContainer" unique_id=1391915831]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="AspectRatioContainer/SubViewportContainer" unique_id=617152603]
+handle_input_locally = false
+size = Vector2i(194, 62)
+render_target_update_mode = 4
+
+[node name="Sprite2D4" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=695214684 instance=ExtResource("2_1jaxx")]
