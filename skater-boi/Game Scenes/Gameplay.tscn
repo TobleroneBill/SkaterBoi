@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" path="res://Game Objects/ob-Player.tscn" id="3_vhp02"]
 [ext_resource type="PackedScene" uid="uid://daun4qwlb1mnw" path="res://Game Objects/ob-Typer.tscn" id="4_vhp02"]
 [ext_resource type="AudioStream" uid="uid://b48qmpb7rcyen" path="res://Audio/Sounds/Clicks/Click1.wav" id="6_ss5vm"]
+[ext_resource type="Texture2D" uid="uid://iry5qixgsmhs" path="res://Textures/BG Skyline.png" id="7_11u7w"]
 [ext_resource type="AudioStream" uid="uid://pgawcdrqtp8d" path="res://Audio/Music/Test Music.wav" id="7_yeto7"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ss5vm"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_11u7w"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_aexhd"]
@@ -101,11 +102,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.045)
 
 [node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_vhp02")]
 transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, -1.295, 2.306, 0.955)
-texture = SubResource("ViewportTexture_yeto7")
+texture = SubResource("ViewportTexture_ss5vm")
 
 [node name="Typer" parent="." unique_id=676901588 instance=ExtResource("4_vhp02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.486, 1.233, 0)
-texture = SubResource("ViewportTexture_11u7w")
+texture = SubResource("ViewportTexture_yeto7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Typer" unique_id=1492768204]
 libraries/ = SubResource("AnimationLibrary_yeto7")
@@ -116,7 +117,8 @@ fov = 100.0
 near = 0.063
 
 [node name="Sunlight" type="DirectionalLight3D" parent="." unique_id=870880612]
-light_color = Color(0.978996, 0.73006856, 0.752828, 1)
+transform = Transform3D(0.55240744, -0.70704925, 0.44150585, 0.7880107, 0.6156615, 0, -0.27181816, 0.34791133, 0.8972584, 0, 0, 0)
+light_color = Color(0.51305044, 0.49029857, 0.67692906, 1)
 
 [node name="newwordTimer" type="Timer" parent="." unique_id=317994189]
 one_shot = true
@@ -130,6 +132,12 @@ stream = ExtResource("6_ss5vm")
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1695571978]
 stream = ExtResource("7_yeto7")
 autoplay = true
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=126837325]
+transform = Transform3D(1.796, 0, 0, 0, 1.515, 0, 0, 0, 1.222, -0.08, 3.69, -2.92)
+texture = ExtResource("7_11u7w")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1196883753]
 
 [connection signal="timeout" from="newwordTimer" to="." method="_on_newword_timer_timeout"]
 [connection signal="timeout" from="wordTimer" to="." method="_on_word_timer_timeout"]

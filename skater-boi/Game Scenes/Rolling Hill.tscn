@@ -71,6 +71,9 @@ script = ExtResource("5_cmjud")
 libraries/ = SubResource("AnimationLibrary_vhp02")
 
 [node name="ApartmentMerge" parent="." unique_id=713149090 instance=ExtResource("6_vmwq8")]
-transform = Transform3D(-0.49782673, 0, -0.037696548, 0, 0.4818733, 0, 0.04656764, 0, -0.40299118, -4.7623796, 2.1025558, -0.0034046173)
+transform = Transform3D(-0.017275346, 0, 0.40450877, 0, 0.4818733, 0, -0.49970147, 0, -0.013984412, -4.7623796, 1.9274094, -0.0034046173)
+
+[node name="ApartmentMerge2" parent="." unique_id=127830999 instance=ExtResource("6_vmwq8")]
+transform = Transform3D(-0.116473936, -0.07566033, 0.38845125, 0.02118789, -0.47588918, -0.061232217, 0.48578274, 0.0026156374, 0.0958079, -4.6520777, -1.6689568, 0.08673668)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
