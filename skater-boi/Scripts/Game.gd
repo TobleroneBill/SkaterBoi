@@ -6,7 +6,6 @@ extends Node3D
 @onready var Player = $Player
 @onready var Soundplayer = $SoundEffects
 
-
 # When to swtich wordlists
 @export var mediumThreshold: int = 5
 @export var hardThreshold: int = 15
@@ -26,8 +25,10 @@ var difficulty = "easy"
 var cantype = true
 
 @export var timervarianceDelta = 1 # the amount of randomized add/minus time to make things less predictable
-
 @export var wordtimerReset = 4
+
+@onready var playerAnimator = $Player/AnimationPlayer
+
 
 @export var ntMinMax = {
 	"min": 2,
@@ -36,6 +37,16 @@ var cantype = true
 
 # the pool of words we draw from
 var wordlist
+
+func playerAnis(aniName):
+	match aniName:
+		"hit":
+			playerAnimator.play("Die")
+			$"Player/Position Animator".play("DieBack")
+		"alive":
+			playerAnimator.play("Alive")
+			$"Player/Position Animator".play("AliveForward")	
+	
 
 # Letter variables
 @export var CurrentWord: String
@@ -58,6 +69,7 @@ func changewordlist(difficulty):
 			wordtimerReset = 7
 
 func _ready():
+	playerAnimator.play("IDLE")
 	changewordlist("extreme")
 	SetNewWord()
 
@@ -72,6 +84,10 @@ func SetNewWord():
 	wordTimer.start(wordtimerReset)
 
 func _physics_process(delta):
+	if randi_range(0,100000) < 150:
+		playerAnimator.play("Wobble")
+		
+	
 	# check for normal GUI, and if so update its text
 	if len(Global.GameManager.GUI.get_children()) == 1:
 		if Global.GameManager.GUI.get_children()[0].has_method("UpdateBoth"):
@@ -89,6 +105,7 @@ func typingsound():
 	Soundplayer.play()
 
 func hit():
+	playerAnis("hit")
 	lives -= 1
 	Global.GameManager.GUI.get_children()[0].damage(lives)
 	
@@ -150,6 +167,9 @@ func _on_newword_timer_timeout():
 	SetNewWord() # start the next word after the max timeout
 	cantype = true
 	Typer.reset()
+	playerAnis("alive")
+	#playerAnimator.play("Alive")
+	
 
 func _on_music_finished():
 	$Music.play()
