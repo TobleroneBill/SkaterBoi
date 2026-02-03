@@ -13,7 +13,7 @@ var wordlist = load("res://Scripts/WordLists/words.tres")
 
 func _ready():
 	Global.GameManager = self
-	Change3D("res://Game Scenes/LoseScene/lose_bg.tscn")
+	Change3D("res://Game Scenes/LoseScene/StartBG.tscn")
 	ChangeGUI("res://Game Scenes/Menu.tscn")
 	
 # Load 3D Level Scene

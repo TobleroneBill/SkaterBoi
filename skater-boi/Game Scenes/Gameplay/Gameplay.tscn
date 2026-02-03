@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://dg5mvxjeoprlw"]
 
-[ext_resource type="Script" uid="uid://1p8ijc4nyi27" path="res://Scripts/Game.gd" id="1_685la"]
-[ext_resource type="PackedScene" uid="uid://2mygxv0jsscf" path="res://Game Scenes/Rolling Hill.tscn" id="2_ss5vm"]
-[ext_resource type="PackedScene" uid="uid://du1ds25crqpit" path="res://Game Objects/ob-Player.tscn" id="3_vhp02"]
-[ext_resource type="PackedScene" uid="uid://daun4qwlb1mnw" path="res://Game Objects/ob-Typer.tscn" id="4_vhp02"]
-[ext_resource type="AudioStream" uid="uid://b48qmpb7rcyen" path="res://Audio/Sounds/Clicks/Click1.wav" id="6_ss5vm"]
-[ext_resource type="Texture2D" uid="uid://dk6q8xww2t4p1" path="res://Textures/Skateboard/BG Skyline.png" id="7_11u7w"]
-[ext_resource type="AudioStream" uid="uid://pgawcdrqtp8d" path="res://Audio/Music/Test Music.wav" id="7_yeto7"]
+[ext_resource type="Script" uid="uid://1p8ijc4nyi27" path="res://Scripts/Game.gd" id="1_hmthc"]
+[ext_resource type="PackedScene" uid="uid://2mygxv0jsscf" path="res://Game Scenes/Rolling Hill.tscn" id="2_s6sno"]
+[ext_resource type="PackedScene" uid="uid://du1ds25crqpit" path="res://Game Objects/ob-Player.tscn" id="3_0mw8w"]
+[ext_resource type="PackedScene" uid="uid://daun4qwlb1mnw" path="res://Game Objects/ob-Typer.tscn" id="4_5m77v"]
+[ext_resource type="AudioStream" uid="uid://kcue4rcx0mqs" path="res://Audio/Sounds/Skating.wav" id="4_s6sno"]
+[ext_resource type="AudioStream" uid="uid://ciw5gwcyyr7xm" path="res://Audio/Sounds/Hit.wav" id="5_0mw8w"]
+[ext_resource type="AudioStream" uid="uid://b48qmpb7rcyen" path="res://Audio/Sounds/Clicks/Click1.wav" id="5_frmo6"]
+[ext_resource type="AudioStream" uid="uid://pgawcdrqtp8d" path="res://Audio/Music/Test Music.wav" id="6_227g8"]
+[ext_resource type="Texture2D" uid="uid://dk6q8xww2t4p1" path="res://Textures/Skateboard/BG Skyline.png" id="7_s3jrr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2jptl"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_t4144"]
@@ -152,7 +154,7 @@ _data = {
 &"RESET": SubResource("Animation_um1rt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_11u7w"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_op3af"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_aexhd"]
@@ -240,24 +242,32 @@ _data = {
 point_count = 3
 
 [node name="GameScene" type="Node3D" unique_id=309273264]
-script = ExtResource("1_685la")
+script = ExtResource("1_hmthc")
 hardThreshold = 7
 extremeThreshold = 12
 lives = 4
 
-[node name="Base2" parent="." unique_id=2076481160 instance=ExtResource("2_ss5vm")]
+[node name="Base2" parent="." unique_id=2076481160 instance=ExtResource("2_s6sno")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.045)
 
-[node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_vhp02")]
+[node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_0mw8w")]
 transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0.085, 2.021, 1.88)
-texture = SubResource("ViewportTexture_yeto7")
+texture = SubResource("ViewportTexture_2jptl")
 
 [node name="Position Animator" type="AnimationPlayer" parent="Player" unique_id=388252183]
 libraries/ = SubResource("AnimationLibrary_njlon")
 
-[node name="Typer" parent="." unique_id=676901588 instance=ExtResource("4_vhp02")]
+[node name="Skating" type="AudioStreamPlayer3D" parent="Player" unique_id=1784846538]
+stream = ExtResource("4_s6sno")
+autoplay = true
+
+[node name="Damage" type="AudioStreamPlayer3D" parent="Player" unique_id=1599175525]
+transform = Transform3D(2.2988505, 0, 0, 0, 2.2988505, 0, 0, 0, 2.2988505, 0, 0, 0)
+stream = ExtResource("5_0mw8w")
+
+[node name="Typer" parent="." unique_id=676901588 instance=ExtResource("4_5m77v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.486, 1.233, 0)
-texture = SubResource("ViewportTexture_11u7w")
+texture = SubResource("ViewportTexture_op3af")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Typer" unique_id=1492768204]
 libraries/ = SubResource("AnimationLibrary_yeto7")
@@ -278,21 +288,22 @@ one_shot = true
 one_shot = true
 
 [node name="SoundEffects" type="AudioStreamPlayer" parent="." unique_id=713010000]
-stream = ExtResource("6_ss5vm")
+stream = ExtResource("5_frmo6")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1695571978]
-stream = ExtResource("7_yeto7")
+stream = ExtResource("6_227g8")
 autoplay = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=126837325]
 transform = Transform3D(1.7499686, 0.34080082, 0, -0.40401208, 1.4761707, 0, 0, 0, 1.222, -0.08, 1.3, -2.92)
 modulate = Color(0.9938733, 0.5216263, 1, 1)
-texture = ExtResource("7_11u7w")
+texture = ExtResource("7_s3jrr")
 
 [node name="Path3D" type="Path3D" parent="." unique_id=158348429]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16507363, 2.007381, -0.5636363)
 curve = SubResource("Curve3D_um1rt")
 
+[connection signal="finished" from="Player/Skating" to="." method="_on_audio_stream_player_3d_finished"]
 [connection signal="timeout" from="newwordTimer" to="." method="_on_newword_timer_timeout"]
 [connection signal="timeout" from="wordTimer" to="." method="_on_word_timer_timeout"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]

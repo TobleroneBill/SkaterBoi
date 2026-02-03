@@ -28,8 +28,6 @@ var cantype = true
 @export var wordtimerReset = 4
 
 @onready var playerAnimator = $Player/AnimationPlayer
-
-
 @export var ntMinMax = {
 	"min": 2,
 	"max": 5
@@ -106,6 +104,8 @@ func typingsound():
 
 func hit():
 	playerAnis("hit")
+	$Player/Damage.play()
+	$Player/Skating.play()
 	lives -= 1
 	Global.GameManager.GUI.get_children()[0].damage(lives)
 	
@@ -168,8 +168,13 @@ func _on_newword_timer_timeout():
 	cantype = true
 	Typer.reset()
 	playerAnis("alive")
+	$Player/AudioStreamPlayer3D.play()
 	#playerAnimator.play("Alive")
 	
 
 func _on_music_finished():
 	$Music.play()
+
+
+func _on_audio_stream_player_3d_finished():
+	$Player/Skating.play()

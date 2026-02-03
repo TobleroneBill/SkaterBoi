@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dy4dqqlr1t17b"
-valid=false
+path="res://.godot/imported/Apartment.blend-a7d254345f58ac6c198ba1cf3fb290ab.scn"
 
 [deps]
 
 source_file="res://3D/Apartment/Apartment.blend"
+dest_files=["res://.godot/imported/Apartment.blend-a7d254345f58ac6c198ba1cf3fb290ab.scn"]
 
 [params]
 

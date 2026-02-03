@@ -1,16 +1,7 @@
 [gd_scene format=3 uid="uid://chpwkpva3b2v"]
 
-[sub_resource type="SystemFont" id="SystemFont_jbsns"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_poujf"]
-font = SubResource("SystemFont_jbsns")
-font_size = 75
-
-[sub_resource type="LabelSettings" id="LabelSettings_8x6sq"]
-font_size = 75
-
-[sub_resource type="LabelSettings" id="LabelSettings_8ka0g"]
-font_size = 75
+[ext_resource type="Script" uid="uid://db8kgg6j04g7s" path="res://Game Scenes/menu.gd" id="1_8x6sq"]
+[ext_resource type="FontFile" uid="uid://o0cgjtt308ru" path="res://UI/Fonts/Orbitron-VariableFont_wght.ttf" id="1_poujf"]
 
 [node name="Control" type="Control" unique_id=580761317]
 layout_mode = 3
@@ -19,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8x6sq")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1188802776]
 layout_mode = 0
@@ -36,27 +28,23 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Start" unique_id=865060321]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Start" unique_id=1553891585]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 1
-text = "Start"
-label_settings = SubResource("LabelSettings_poujf")
+theme_override_fonts/font = ExtResource("1_poujf")
+theme_override_font_sizes/font_size = 75
+text = "Start
+"
+alignment = 0
 
 [node name="Credit" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=565998834]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Credit" unique_id=1221027928]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Credit" unique_id=1563081768]
 layout_mode = 2
-size_flags_horizontal = 2
-text = "Credit"
-label_settings = SubResource("LabelSettings_8x6sq")
+theme_override_fonts/font = ExtResource("1_poujf")
+theme_override_font_sizes/font_size = 75
+text = "Credits"
+alignment = 0
 
-[node name="Quit" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=145278138]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Quit" unique_id=1951184870]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Quit"
-label_settings = SubResource("LabelSettings_8ka0g")
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Start/Button" to="." method="Start_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Credit/Button" to="." method="Credits_on_button_pressed"]
