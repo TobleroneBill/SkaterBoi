@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsd0c2rb8hasm"
-path="res://.godot/imported/SkaterTest.png-ca6f94b6bb1a71b7c24c00b6eeee418b.ctex"
+uid="uid://oavmfqxhkqgd"
+path="res://.godot/imported/Skater-Sheet3.png-53b48ae61017241ed9d6d118d7c23a1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/SkaterTest.png"
-dest_files=["res://.godot/imported/SkaterTest.png-ca6f94b6bb1a71b7c24c00b6eeee418b.ctex"]
+source_file="res://Textures/Skater/Skater-Sheet3.png"
+dest_files=["res://.godot/imported/Skater-Sheet3.png-53b48ae61017241ed9d6d118d7c23a1d.ctex"]
 
 [params]
 

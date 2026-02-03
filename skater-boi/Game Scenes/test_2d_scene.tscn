@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://d3enun6mjcaw0"]
 
-[ext_resource type="Texture2D" uid="uid://bsd0c2rb8hasm" path="res://Textures/SkaterTest.png" id="1_82t7b"]
+[ext_resource type="Texture2D" uid="uid://oavmfqxhkqgd" path="res://Textures/Skater/Skater-Sheet3.png" id="1_82t7b"]
 
 [node name="Test2DScene" type="Node2D" unique_id=2099844465]
+texture_filter = 1
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1143471616]
-position = Vector2(208, 249)
-scale = Vector2(1.3515625, 1.2734375)
+texture_filter = 1
+position = Vector2(128, 256)
+scale = Vector2(4, 4)
 texture = ExtResource("1_82t7b")
+hframes = 4
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1512053]
 anchor_mode = 0
