@@ -1,4 +1,4 @@
-extends CSGCylinder3D
+extends Node3D
 
 func _ready():
 	$AnimationPlayer.play("Rotate")

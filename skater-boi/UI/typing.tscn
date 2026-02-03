@@ -4,12 +4,12 @@
 [ext_resource type="FontFile" uid="uid://o0cgjtt308ru" path="res://UI/Fonts/Orbitron-VariableFont_wght.ttf" id="2_nqm66"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bj4i4"]
-bg_color = Color(0, 0, 0, 0.54901963)
+bg_color = Color(0, 0, 0, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -33,19 +33,23 @@ size_flags_horizontal = 4
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=115613970]
 clip_contents = true
 layout_mode = 0
-offset_right = 13.0
-offset_bottom = 34.0
+offset_right = 19.05
+offset_bottom = 57.115
 theme_override_styles/panel = SubResource("StyleBoxFlat_bj4i4")
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer" unique_id=835822872]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1194385832]
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Base Text" type="Label" parent="PanelContainer/PanelContainer" unique_id=1211187502]
+[node name="Base Text" type="Label" parent="PanelContainer/MarginContainer" unique_id=1211187502]
 layout_mode = 2
 label_settings = ExtResource("1_1h632")
 vertical_alignment = 1
 
-[node name="User Text" type="Label" parent="PanelContainer/PanelContainer" unique_id=1738332268]
+[node name="User Text" type="Label" parent="PanelContainer/MarginContainer" unique_id=1738332268]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_kkm3p")
 vertical_alignment = 1

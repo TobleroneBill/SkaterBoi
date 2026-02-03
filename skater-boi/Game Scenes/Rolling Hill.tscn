@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://2mygxv0jsscf"]
+
+[ext_resource type="ArrayMesh" uid="uid://bey3hg1efyk0n" path="res://3D/CityBase/base2.obj" id="1_k72as"]
+[ext_resource type="Texture2D" uid="uid://dectdcfoy135a" path="res://3D/CityBase/RoadTex.png" id="2_vmwq8"]
+[ext_resource type="Texture2D" uid="uid://cphpxcbwviq58" path="res://3D/CityBase/CURB.png" id="3_6p5hj"]
+[ext_resource type="Texture2D" uid="uid://cspfm74qv5wp4" path="res://3D/CityBase/Pavemt.png" id="4_q71go"]
+[ext_resource type="Script" uid="uid://b1g07gegjl25f" path="res://3D/CityBase/rolling_hill.gd" id="5_cmjud"]
+[ext_resource type="PackedScene" uid="uid://b0de4hd67h1hw" path="res://3D/Apartment/ApartmentMerge.glb" id="6_vmwq8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nptqd"]
+shading_mode = 0
+albedo_texture = ExtResource("2_vmwq8")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ss4i"]
+shading_mode = 0
+albedo_texture = ExtResource("3_6p5hj")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qh8aq"]
+shading_mode = 0
+albedo_texture = ExtResource("4_q71go")
+uv1_scale = Vector3(9.065, 9.065, 9.065)
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_v64xd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3yadi"]
+resource_name = "Rotate"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.2831855, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhp02"]
+_data = {
+&"RESET": SubResource("Animation_v64xd"),
+&"Rotate": SubResource("Animation_3yadi")
+}
+
+[node name="Base2" type="MeshInstance3D" unique_id=2076481160]
+mesh = ExtResource("1_k72as")
+surface_material_override/0 = SubResource("StandardMaterial3D_nptqd")
+surface_material_override/1 = SubResource("StandardMaterial3D_4ss4i")
+surface_material_override/2 = SubResource("StandardMaterial3D_qh8aq")
+script = ExtResource("5_cmjud")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=602171890]
+libraries/ = SubResource("AnimationLibrary_vhp02")
+
+[node name="ApartmentMerge" parent="." unique_id=713149090 instance=ExtResource("6_vmwq8")]
+transform = Transform3D(-0.017275346, 0, 0.40450877, 0, 0.4818733, 0, -0.49970147, 0, -0.013984412, -4.7623796, 1.9274094, -0.0034046173)
+
+[node name="ApartmentMerge2" parent="." unique_id=127830999 instance=ExtResource("6_vmwq8")]
+transform = Transform3D(-0.116473936, -0.07566033, 0.38845125, 0.02118789, -0.47588918, -0.061232217, 0.48578274, 0.0026156374, 0.0958079, -4.6520777, -1.6689568, 0.08673668)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

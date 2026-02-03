@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://daun4qwlb1mnw"]
 
 [ext_resource type="PackedScene" uid="uid://c0l58a5hefwdb" path="res://UI/typing.tscn" id="1_4qrtl"]
-[ext_resource type="Script" uid="uid://cmgh85hkdqo6x" path="res://Game Objects/S-Typer.gd" id="1_qmngm"]
+[ext_resource type="Script" uid="uid://v0vev4u150lv" path="res://Game Objects/S-Typer.gd" id="1_qmngm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4qrtl"]
 viewport_path = NodePath("SubViewport")
@@ -13,6 +13,6 @@ script = ExtResource("1_qmngm")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=287242076]
 transparent_bg = true
-size = Vector2i(1200, 100)
+size = Vector2i(900, 400)
 
 [node name="Control" parent="SubViewport" unique_id=1089200511 instance=ExtResource("1_4qrtl")]

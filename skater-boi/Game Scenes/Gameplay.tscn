@@ -1,59 +1,17 @@
 [gd_scene format=3 uid="uid://dg5mvxjeoprlw"]
 
 [ext_resource type="Script" uid="uid://1p8ijc4nyi27" path="res://Scripts/Game.gd" id="1_685la"]
-[ext_resource type="Texture2D" uid="uid://dy66kacyfc25y" path="res://Textures/TestTilesprite.png" id="2_aexhd"]
-[ext_resource type="Script" uid="uid://b1g07gegjl25f" path="res://Game Scenes/rolling_hill.gd" id="3_aexhd"]
+[ext_resource type="PackedScene" uid="uid://2mygxv0jsscf" path="res://Game Scenes/Rolling Hill.tscn" id="2_ss5vm"]
 [ext_resource type="PackedScene" path="res://Game Objects/ob-Player.tscn" id="3_vhp02"]
 [ext_resource type="PackedScene" uid="uid://daun4qwlb1mnw" path="res://Game Objects/ob-Typer.tscn" id="4_vhp02"]
 [ext_resource type="AudioStream" uid="uid://b48qmpb7rcyen" path="res://Audio/Sounds/Clicks/Click1.wav" id="6_ss5vm"]
+[ext_resource type="Texture2D" uid="uid://iry5qixgsmhs" path="res://Textures/BG Skyline.png" id="7_11u7w"]
 [ext_resource type="AudioStream" uid="uid://pgawcdrqtp8d" path="res://Audio/Music/Test Music.wav" id="7_yeto7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yadi"]
-shading_mode = 0
-albedo_texture = ExtResource("2_aexhd")
-uv1_scale = Vector3(20, 20, 20)
-
-[sub_resource type="Animation" id="Animation_v64xd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.5707964)]
-}
-
-[sub_resource type="Animation" id="Animation_3yadi"]
-resource_name = "Rotate"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, -1.5707964), Vector3(6.2831855, 0, -1.5707964)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhp02"]
-_data = {
-&"RESET": SubResource("Animation_v64xd"),
-&"Rotate": SubResource("Animation_3yadi")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ss5vm"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_11u7w"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yeto7"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_aexhd"]
@@ -139,22 +97,16 @@ hardThreshold = 7
 extremeThreshold = 12
 lives = 4
 
-[node name="RollingHill" type="CSGCylinder3D" parent="." unique_id=115029221]
-transform = Transform3D(-1.9909318e-07, 23.240831, 0, -4.554721, -1.015889e-06, 0, 0, 0, 4.554722, 0, -1.248178, 0)
-material_override = SubResource("StandardMaterial3D_3yadi")
-sides = 20
-script = ExtResource("3_aexhd")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RollingHill" unique_id=323957552]
-libraries/ = SubResource("AnimationLibrary_vhp02")
+[node name="Base2" parent="." unique_id=2076481160 instance=ExtResource("2_ss5vm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.045)
 
 [node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_vhp02")]
-transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, -1.485, 1.751, 0.955)
-texture = SubResource("ViewportTexture_yeto7")
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, -1.295, 2.306, 0.955)
+texture = SubResource("ViewportTexture_ss5vm")
 
 [node name="Typer" parent="." unique_id=676901588 instance=ExtResource("4_vhp02")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.416, 1.843, 0)
-texture = SubResource("ViewportTexture_11u7w")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.486, 1.233, 0)
+texture = SubResource("ViewportTexture_yeto7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Typer" unique_id=1492768204]
 libraries/ = SubResource("AnimationLibrary_yeto7")
@@ -165,7 +117,8 @@ fov = 100.0
 near = 0.063
 
 [node name="Sunlight" type="DirectionalLight3D" parent="." unique_id=870880612]
-light_color = Color(0.978996, 0.73006856, 0.752828, 1)
+transform = Transform3D(0.55240744, -0.70704925, 0.44150585, 0.7880107, 0.6156615, 0, -0.27181816, 0.34791133, 0.8972584, 0, 0, 0)
+light_color = Color(0.51305044, 0.49029857, 0.67692906, 1)
 
 [node name="newwordTimer" type="Timer" parent="." unique_id=317994189]
 one_shot = true
@@ -180,7 +133,12 @@ stream = ExtResource("6_ss5vm")
 stream = ExtResource("7_yeto7")
 autoplay = true
 
-[connection signal="animation_finished" from="RollingHill/AnimationPlayer" to="RollingHill" method="_on_animation_player_animation_finished"]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=126837325]
+transform = Transform3D(1.796, 0, 0, 0, 1.515, 0, 0, 0, 1.222, -0.08, 3.69, -2.92)
+texture = ExtResource("7_11u7w")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1196883753]
+
 [connection signal="timeout" from="newwordTimer" to="." method="_on_newword_timer_timeout"]
 [connection signal="timeout" from="wordTimer" to="." method="_on_word_timer_timeout"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
