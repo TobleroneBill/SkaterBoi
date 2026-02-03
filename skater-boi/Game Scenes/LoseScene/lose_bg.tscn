@@ -1,3 +1,32 @@
 [gd_scene format=3 uid="uid://iq6ok26lw8m8"]
 
+[ext_resource type="PackedScene" uid="uid://2mygxv0jsscf" path="res://Game Scenes/Rolling Hill.tscn" id="1_hvnuu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hvnuu"]
+sky_top_color = Color(0.32557803, 0.0004806818, 0.4373659, 1)
+sky_horizon_color = Color(0.3261, 0.16639428, 0.3854195, 1)
+ground_bottom_color = Color(0.3137255, 0, 0.4392157, 1)
+ground_horizon_color = Color(0.3261, 0.16639428, 0.3854195, 1)
+
+[sub_resource type="Sky" id="Sky_bbpm8"]
+sky_material = SubResource("ProceduralSkyMaterial_hvnuu")
+
+[sub_resource type="Environment" id="Environment_1knpy"]
+background_mode = 2
+sky = SubResource("Sky_bbpm8")
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
 [node name="LoseBG" type="Node3D" unique_id=852875996]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1866241519]
+environment = SubResource("Environment_1knpy")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=33064069]
+
+[node name="Base2" parent="." unique_id=2076481160 instance=ExtResource("1_hvnuu")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1608512950]
+transform = Transform3D(0.50547373, 0.25090998, -0.82555467, 0.11412861, 0.9289365, 0.35220978, 0.85526085, -0.27225217, 0.44091693, -1.7408648, 1.7782185, 0.9018011)
+fov = 28.5
