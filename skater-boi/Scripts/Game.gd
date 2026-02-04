@@ -61,6 +61,7 @@ func changewordlist(difficulty):
 			wordtimerReset = 4
 			Typer.position = $Typerpos1.position
 			$Music.stream = load("res://Audio/Music/Difficutly Music 2/Easy.wav")
+			
 		"medium":
 			wordlist = Global.GameManager.wordlist.medium
 			wordtimerReset = 4
@@ -77,7 +78,7 @@ func changewordlist(difficulty):
 			wordtimerReset = 7
 			Typer.position = $Typerpos2.position
 			$Music.stream = load("res://Audio/Music/Difficutly Music 2/ext.wav") 
-			
+	$Music.play()
 
 func _ready():
 	playerAnimator.play("IDLE")
