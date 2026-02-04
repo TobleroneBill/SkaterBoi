@@ -12,12 +12,15 @@ extends Node3D
 @export var extremeThreshold: int = 30
 
 # Scoring
-var Score: float = 0
+var CorrectStreak: int = 0
 var Multiplier: int = 1
 var AddScore: int = 100	#score that gets added on a successful spelling
-var CorrectStreak: int = 0
 var difficulty = "easy"
 @export var lives: int = 5
+
+var HighestMult = 1
+var Score: float = 0
+var totalwords: int = 0
 
 # Timer Settings
 @onready var wordTimer = $wordTimer 	# how long until to completeword
@@ -56,27 +59,38 @@ func changewordlist(difficulty):
 		"easy":
 			wordlist = Global.GameManager.wordlist.easy
 			wordtimerReset = 4
+			Typer.position = $Typerpos1.position
+			$Music.stream = load("res://Audio/Music/Difficutly Music 2/Easy.wav")
 		"medium":
 			wordlist = Global.GameManager.wordlist.medium
 			wordtimerReset = 4
+			Typer.position = $Typerpos1.position
+			$Music.stream = load("res://Audio/Music/Difficutly Music 2/Med.wav")
 		"hard":
 			wordlist = Global.GameManager.wordlist.hard
 			wordtimerReset = 5
+			Typer.position = $Typerpos1.position
+			$Music.stream = load("res://Audio/Music/Difficutly Music 2/Hard.wav")
+			
 		"extreme":
 			wordlist = Global.GameManager.wordlist.extreme
 			wordtimerReset = 7
+			Typer.position = $Typerpos2.position
+			$Music.stream = load("res://Audio/Music/Difficutly Music 2/ext.wav") 
+			
 
 func _ready():
 	playerAnimator.play("IDLE")
-	changewordlist("extreme")
+	changewordlist("easy")
 	SetNewWord()
+	$Music.play()
 
 #Set the new word to write
 func SetNewWord():
 	var newword = wordlist.pick_random()
 	while newword == CurrentWord:
 		newword = wordlist.pick_random()
-	CurrentWord = wordlist.pick_random()
+	CurrentWord = newword
 	Typer.Update(CurrentWord)
 	LetterIndex = 0
 	wordTimer.start(wordtimerReset)
@@ -89,9 +103,15 @@ func _physics_process(delta):
 	# check for normal GUI, and if so update its text
 	if len(Global.GameManager.GUI.get_children()) == 1:
 		if Global.GameManager.GUI.get_children()[0].has_method("UpdateBoth"):
+			#Global.GameManager.GUI.get_children()[0].UpdateLife(int(lives))
 			Global.GameManager.GUI.get_children()[0].UpdateBoth(Score,Multiplier)
-			Global.GameManager.GUI.get_children()[0].UpdateTimer(int(wordTimer.time_left))
-			Global.GameManager.GUI.get_children()[0].UpdateLife(int(lives))
+			#if Multiplier<1:
+			if CorrectStreak !=0:
+				var streakProgress = float(CorrectStreak)/float(Multiplier)
+				Global.GameManager.GUI.get_children()[0].MultLevelProgress(streakProgress*100)
+			else:
+				Global.GameManager.GUI.get_children()[0].MultLevelProgress(0)
+			
 	
 	# Update the Typer Timer
 	var percentageTime = (wordTimer.time_left / wordtimerReset) * 100
@@ -105,11 +125,22 @@ func typingsound():
 func hit():
 	playerAnis("hit")
 	$Player/Damage.play()
-	$Player/Skating.play()
+	$Player/Skating.stop()
 	lives -= 1
 	Global.GameManager.GUI.get_children()[0].damage(lives)
 	
 	if lives <= 0:
+		print(HighestMult)
+		print(Score)
+		print(totalwords)
+	
+		#set Session Variables
+		Global.GameManager.sessionMult = HighestMult
+		Global.GameManager.sessionScore = Score
+		Global.GameManager.sessionwords = totalwords
+		
+		#Check Hiscores
+		
 		Global.GameManager.Change3D("res://Game Scenes/LoseScene/lose_bg.tscn")
 		Global.GameManager.ChangeGUI("res://Game Scenes/LoseScene/failscreen.tscn")
 		print('died')
@@ -127,6 +158,7 @@ func _input(event):
 			if LetterIndex != len(CurrentWord)-1:
 				LetterIndex+=1
 			else: ## !!!Correct!!!
+				totalwords +=1
 				wordTimer.start(wordtimerReset)
 				Score += (AddScore * Multiplier)
 				CorrectStreak+=1 
@@ -141,6 +173,9 @@ func _input(event):
 					# increase multiplier and reset the streak
 					Multiplier += 1
 					CorrectStreak = 0
+					$S_GETMULT.play()
+				else:
+					$S_GETPOINTS.play()
 				SetNewWord() # start the next word & restart timer
 				print("Score: "+ str(Score))
 		else: # !!!failed!!!
@@ -149,11 +184,15 @@ func _input(event):
 			cantype = false
 			Typer.Fadeout()
 			# reset multiplier & go back to easy words on failure 
+			if Multiplier > HighestMult:
+				HighestMult = Multiplier
+			
 			CorrectStreak = 0
 			Multiplier = 1
 			hit()
 			wordTimer.stop()
 			changewordlist("easy")
+			
 
 func _on_word_timer_timeout():
 	newwordTimer.start(wordtimerReset)
@@ -168,8 +207,7 @@ func _on_newword_timer_timeout():
 	cantype = true
 	Typer.reset()
 	playerAnis("alive")
-	$Player/AudioStreamPlayer3D.play()
-	#playerAnimator.play("Alive")
+	$Player/Skating.play()
 	
 
 func _on_music_finished():

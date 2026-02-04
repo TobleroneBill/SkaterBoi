@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cf8rds6acs7ua"
+path="res://.godot/imported/Hard.wav-3aaf273ea1be16737614e570572d57be.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Difficutly Music 2/Hard.wav"
+dest_files=["res://.godot/imported/Hard.wav-3aaf273ea1be16737614e570572d57be.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://db8kgg6j04g7s" path="res://Game Scenes/menu.gd" id="1_8x6sq"]
 [ext_resource type="FontFile" uid="uid://o0cgjtt308ru" path="res://UI/Fonts/Orbitron-VariableFont_wght.ttf" id="1_poujf"]
+[ext_resource type="AudioStream" uid="uid://cqbk415wsokay" path="res://Audio/Music/all songs.wav" id="3_8ka0g"]
 
 [node name="Control" type="Control" unique_id=580761317]
 layout_mode = 3
@@ -46,5 +47,10 @@ theme_override_font_sizes/font_size = 75
 text = "Credits"
 alignment = 0
 
+[node name="Mainmenu" type="AudioStreamPlayer" parent="." unique_id=99718344]
+stream = ExtResource("3_8ka0g")
+autoplay = true
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Start/Button" to="." method="Start_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Credit/Button" to="." method="Credits_on_button_pressed"]
+[connection signal="finished" from="Mainmenu" to="." method="_on_mainmenu_finished"]

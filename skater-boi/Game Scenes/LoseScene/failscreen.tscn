@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dvlk8vobnakbg"]
 
 [ext_resource type="Script" uid="uid://gwjgcbabegfo" path="res://Game Scenes/LoseScene/Failscreen.gd" id="1_i8xna"]
+[ext_resource type="FontFile" uid="uid://o0cgjtt308ru" path="res://UI/Fonts/Orbitron-VariableFont_wght.ttf" id="2_opvyh"]
+[ext_resource type="AudioStream" uid="uid://cg4xms4t58hq6" path="res://Audio/Music/DeadTheme.wav" id="3_prmod"]
 
 [node name="Failscreen" type="Control" unique_id=1348203752]
 layout_mode = 3
@@ -11,31 +13,226 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i8xna")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1011996485]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=128188705]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -11.5
-offset_right = 25.0
-offset_bottom = 11.5
+offset_left = -202.0
+offset_right = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=61773049]
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer" unique_id=1686289339]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer3" unique_id=1540263117]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer" unique_id=213371536]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer3" unique_id=88064682]
 layout_mode = 2
-text = "U died"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/separation = 10
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=497064741]
+[node name="SessionWordsContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=1074754146]
 layout_mode = 2
+
+[node name="SessionWordCount" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionWordsContainer" unique_id=1695174849]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionWordsContainer/SessionWordCount" unique_id=1893497204]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total Words: "
+
+[node name="Total" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionWordsContainer" unique_id=27147969]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionWordsContainer/Total" unique_id=1319177572]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total"
+
+[node name="SessionScoreContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=1425450555]
+layout_mode = 2
+
+[node name="SessionScore" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionScoreContainer" unique_id=1876389049]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionScoreContainer/SessionScore" unique_id=317132484]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Session Score: "
+
+[node name="Total" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionScoreContainer" unique_id=1130744510]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionScoreContainer/Total" unique_id=618817632]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total"
+
+[node name="SessionMultContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=1509152461]
+layout_mode = 2
+
+[node name="SessionScore" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionMultContainer" unique_id=1038795785]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionMultContainer/SessionScore" unique_id=699721788]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Highest Mult: "
+
+[node name="Total" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionMultContainer" unique_id=1187900724]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionMultContainer/Total" unique_id=134709038]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total"
+
+[node name="SessionRankContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=1487232360]
+layout_mode = 2
+
+[node name="SessionRank" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionRankContainer" unique_id=2129453794]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionRankContainer/SessionRank" unique_id=777780883]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Ranking:"
+
+[node name="Total" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionRankContainer" unique_id=1337042929]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionRankContainer/Total" unique_id=1768029063]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=563202949]
+layout_mode = 2
+
+[node name="HiWordsContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=2570878]
+layout_mode = 2
+
+[node name="SessionWordCount" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiWordsContainer" unique_id=325661456]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiWordsContainer/SessionWordCount" unique_id=730964931]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Best Words: "
+
+[node name="Total" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiWordsContainer" unique_id=1067455807]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiWordsContainer/Total" unique_id=1108093176]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total"
+
+[node name="HiScoreContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=1779273748]
+layout_mode = 2
+
+[node name="SessionScore" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiScoreContainer" unique_id=2074116064]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiScoreContainer/SessionScore" unique_id=647757928]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Best Score: "
+
+[node name="Total" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiScoreContainer" unique_id=1255957933]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiScoreContainer/Total" unique_id=1094671230]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total"
+
+[node name="HiMultContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=188164425]
+layout_mode = 2
+
+[node name="SessionScore" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiMultContainer" unique_id=913461277]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiMultContainer/SessionScore" unique_id=703396621]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Highest Mult: "
+
+[node name="Total" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiMultContainer" unique_id=5488749]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/HiMultContainer/Total" unique_id=1886840890]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total"
+
+[node name="SessionRankContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer" unique_id=1275443945]
+layout_mode = 2
+
+[node name="SessionRank" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionRankContainer2" unique_id=1963621650]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionRankContainer2/SessionRank" unique_id=1116772887]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Best Rank:"
+
+[node name="Total" type="PanelContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionRankContainer2" unique_id=1215722579]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer/SessionRankContainer2/Total" unique_id=1218602450]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+text = "Total"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1615192661]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer" unique_id=263202629]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=1872702892]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=6038674]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="Button" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=8761398]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+theme_override_font_sizes/font_size = 24
 text = "Restart"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="Quit" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1031893781]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="Button" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer/Quit" unique_id=1907925432]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opvyh")
+theme_override_font_sizes/font_size = 24
+text = "Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1189487823]
+stream = ExtResource("3_prmod")
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Button" to="." method="Restart_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Quit/Button" to="." method="Menu"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

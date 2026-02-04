@@ -7,10 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://kcue4rcx0mqs" path="res://Audio/Sounds/Skating.wav" id="4_s6sno"]
 [ext_resource type="AudioStream" uid="uid://ciw5gwcyyr7xm" path="res://Audio/Sounds/Hit.wav" id="5_0mw8w"]
 [ext_resource type="AudioStream" uid="uid://b48qmpb7rcyen" path="res://Audio/Sounds/Clicks/Click1.wav" id="5_frmo6"]
-[ext_resource type="AudioStream" uid="uid://pgawcdrqtp8d" path="res://Audio/Music/Test Music.wav" id="6_227g8"]
+[ext_resource type="AudioStream" uid="uid://br7124q0vancf" path="res://Audio/Sounds/3xDing.wav" id="7_frmo6"]
 [ext_resource type="Texture2D" uid="uid://dk6q8xww2t4p1" path="res://Textures/Skateboard/BG Skyline.png" id="7_s3jrr"]
+[ext_resource type="AudioStream" uid="uid://e2f4v57b1ych" path="res://Audio/Sounds/points.wav" id="8_5m77v"]
+[ext_resource type="AudioStream" uid="uid://1nckuubwnviy" path="res://Audio/Music/Difficutly Music 2/Easy.wav" id="10_frmo6"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2jptl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_frmo6"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_t4144"]
@@ -154,7 +156,7 @@ _data = {
 &"RESET": SubResource("Animation_um1rt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_op3af"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_227g8"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_aexhd"]
@@ -252,7 +254,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.045)
 
 [node name="Player" parent="." unique_id=273068932 instance=ExtResource("3_0mw8w")]
 transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0.085, 2.021, 1.88)
-texture = SubResource("ViewportTexture_2jptl")
+texture = SubResource("ViewportTexture_frmo6")
 
 [node name="Position Animator" type="AnimationPlayer" parent="Player" unique_id=388252183]
 libraries/ = SubResource("AnimationLibrary_njlon")
@@ -267,7 +269,7 @@ stream = ExtResource("5_0mw8w")
 
 [node name="Typer" parent="." unique_id=676901588 instance=ExtResource("4_5m77v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.486, 1.233, 0)
-texture = SubResource("ViewportTexture_op3af")
+texture = SubResource("ViewportTexture_227g8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Typer" unique_id=1492768204]
 libraries/ = SubResource("AnimationLibrary_yeto7")
@@ -287,21 +289,33 @@ one_shot = true
 [node name="wordTimer" type="Timer" parent="." unique_id=686688765]
 one_shot = true
 
+[node name="S_GETMULT" type="AudioStreamPlayer" parent="." unique_id=1184638670]
+stream = ExtResource("7_frmo6")
+
+[node name="S_GETPOINTS" type="AudioStreamPlayer" parent="." unique_id=2111541968]
+stream = ExtResource("8_5m77v")
+
 [node name="SoundEffects" type="AudioStreamPlayer" parent="." unique_id=713010000]
 stream = ExtResource("5_frmo6")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1695571978]
-stream = ExtResource("6_227g8")
+stream = ExtResource("10_frmo6")
 autoplay = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=126837325]
-transform = Transform3D(1.7499686, 0.34080082, 0, -0.40401208, 1.4761707, 0, 0, 0, 1.222, -0.08, 1.3, -2.92)
+transform = Transform3D(1.8547001, 0.34550965, 0, -0.42819124, 1.4965669, 0, 0, 0, 1.222, -0.08, 1.3, -2.92)
 modulate = Color(0.9938733, 0.5216263, 1, 1)
 texture = ExtResource("7_s3jrr")
 
 [node name="Path3D" type="Path3D" parent="." unique_id=158348429]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16507363, 2.007381, -0.5636363)
 curve = SubResource("Curve3D_um1rt")
+
+[node name="Typerpos2" type="Marker3D" parent="." unique_id=1591074994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.8, -1)
+
+[node name="Typerpos1" type="Marker3D" parent="." unique_id=465752563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.486, 1.233, 0)
 
 [connection signal="finished" from="Player/Skating" to="." method="_on_audio_stream_player_3d_finished"]
 [connection signal="timeout" from="newwordTimer" to="." method="_on_newword_timer_timeout"]

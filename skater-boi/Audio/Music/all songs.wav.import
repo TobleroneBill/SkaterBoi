@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cqbk415wsokay"
+path="res://.godot/imported/all songs.wav-2ea19740b2b6e7913a55e79d981dff4e.sample"
+
+[deps]
+
+source_file="res://Audio/Music/all songs.wav"
+dest_files=["res://.godot/imported/all songs.wav-2ea19740b2b6e7913a55e79d981dff4e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

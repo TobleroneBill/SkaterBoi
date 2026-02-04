@@ -1,9 +1,8 @@
 extends Control
 
-@onready var scoreLabel = $HBoxContainer2/ScoreVBOX/ScorePlayer
-@onready var multLabel = $HBoxContainer2/MultVbox/MultPlayer
-@onready var timeLabel = $HBoxContainer2/TimerVbox/TimerPlayer
-@onready var lifeLabel = $HBoxContainer2/LifeVbox/lifePlayer
+#@onready var scoreLabel = $HBoxContainer2/ScoreVBOX/ScorePlayer
+@onready var multLabel = $PanelContainer/VBoxContainer/HBoxContainer/MultLabel
+@onready var scoreLabel = $PanelContainer/VBoxContainer/Score
 
 var hp: Array[TextureRect]
 
@@ -19,26 +18,21 @@ func _ready():
 	
 func damage(newHP):
 	updatehp(newHP)
-	# ADD OTHER STUFF LIKE SOUND EFFECTS, ANIMATIONS ETC.
-	
+
+func MultLevelProgress(percent):
+	#print(percent)
+	$PanelContainer/VBoxContainer/ProgressBar.value = percent
 
 func updatehp(newHP):
 	for i in range(hp.size()):
 		hp[i].visible = i< newHP
 
-func UpdateScore(newscore):
-	scoreLabel.text = str(int(newscore))
-	
 func UpdateMult(newmult):
 	multLabel.text = str(newmult)
-
-func UpdateTimer(newtime):
-	timeLabel.text = str(newtime)
 	
-func UpdateLife(newlife):
-	lifeLabel.text = str(newlife)
+func UpdateScore(newscore):
+	scoreLabel.text = str(newscore)
 
 func UpdateBoth(newscore,newmult):
-	UpdateScore(newscore)
 	UpdateMult(newmult)
-	
+	UpdateScore(newscore)

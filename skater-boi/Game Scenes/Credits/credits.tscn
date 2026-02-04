@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://b4wipd6h3lbtk"]
+
+[ext_resource type="FontFile" uid="uid://o0cgjtt308ru" path="res://UI/Fonts/Orbitron-VariableFont_wght.ttf" id="1_7j8hm"]
+[ext_resource type="Script" uid="uid://da1ij0x4kbs0h" path="res://Game Scenes/Credits/credits.gd" id="1_twg1m"]
+
+[node name="Credits" type="Control" unique_id=805796655]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_twg1m")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2119106471]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2026927399]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Project Lead" type="MarginContainer" parent="VBoxContainer" unique_id=1695498847]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Project Lead" unique_id=596392178]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Project Lead/PanelContainer" unique_id=1567152313]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_7j8hm")
+theme_override_font_sizes/font_size = 32
+text = "Project Lead"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lightninground" type="MarginContainer" parent="VBoxContainer" unique_id=1048771148]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Lightninground" unique_id=1400791488]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Lightninground/PanelContainer" unique_id=2134817768]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7j8hm")
+theme_override_font_sizes/font_size = 32
+text = "Lightninground"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Helper Dude" type="MarginContainer" parent="VBoxContainer" unique_id=914290032]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Helper Dude" unique_id=1387395109]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Helper Dude/PanelContainer" unique_id=831367388]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.17254902, 1, 1)
+theme_override_fonts/font = ExtResource("1_7j8hm")
+theme_override_font_sizes/font_size = 32
+text = "Helper Dude"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OmegapowerDX" type="MarginContainer" parent="VBoxContainer" unique_id=2065105575]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/OmegapowerDX" unique_id=2112305778]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/OmegapowerDX/PanelContainer" unique_id=1722224851]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7j8hm")
+theme_override_font_sizes/font_size = 32
+text = "OmegapowerDX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ty 4 playin!" type="MarginContainer" parent="VBoxContainer" unique_id=1252149096]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ty 4 playin!" unique_id=275574691]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ty 4 playin!/PanelContainer" unique_id=269088768]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24897715, 0.5043501, 1, 1)
+theme_override_fonts/font = ExtResource("1_7j8hm")
+theme_override_font_sizes/font_size = 32
+text = "ty 4 playin!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="HBoxContainer" parent="VBoxContainer" unique_id=349660720]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="VBoxContainer/Return" unique_id=2057898226]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_7j8hm")
+theme_override_font_sizes/font_size = 30
+text = "Return"
+
+[node name="Sources Label" type="MarginContainer" parent="VBoxContainer" unique_id=1261044675]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Sources Label" unique_id=858811750]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Sources Label/PanelContainer2" unique_id=2132645090]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_7j8hm")
+theme_override_font_sizes/font_size = 16
+text = "Sources"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Actual Sources" type="PanelContainer" parent="VBoxContainer" unique_id=1868306358]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Actual Sources" unique_id=1875400764]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_7j8hm")
+theme_override_font_sizes/font_size = 12
+text = "skateboard - https://pixabay.com/sound-effects/film-special-effects-skateboard-1-72026/
+money  - https://pixabay.com/sound-effects/film-special-effects-cashier-quotka-chingquot-sound-effect-129698/ 
+correct answer  - https://pixabay.com/sound-effects/film-special-effects-hotel-bell-ding-1-174457/
+Hit - https://pixabay.com/sound-effects/film-special-effects-smacking-sound-97529/
+skateboard 2 - https://pixabay.com/sound-effects/city-skateboarder-05-86203/
+UI Tutorial - https://www.youtube.com/watch?v=5Hog6a0EYa0
+PS1 Texturing - https://www.youtube.com/watch?v=A25NTdPGNaw
+Painting Environments - https://www.youtube.com/watch?v=VW7DpsFgj8o"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Return/Button" to="." method="_on_button_pressed"]

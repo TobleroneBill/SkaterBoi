@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://nr5lxcqdrqip" path="res://Game Scenes/Gameplay/GUIUpdateAnchors.gd" id="1_q7jbj"]
 [ext_resource type="Texture2D" uid="uid://cyusliuvk22wo" path="res://Textures/Skateboard/Skateboard Whole.png" id="2_gymsc"]
 [ext_resource type="Texture2D" uid="uid://cgie6224i1a88" path="res://Textures/Wheels lives.png" id="3_41ao1"]
+[ext_resource type="StyleBox" uid="uid://hhpr0eew285r" path="res://ContainerSettings.tres" id="4_3pkni"]
+[ext_resource type="FontFile" uid="uid://o0cgjtt308ru" path="res://UI/Fonts/Orbitron-VariableFont_wght.ttf" id="4_6t07p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pkni"]
+bg_color = Color(1, 0, 0.016666412, 1)
 
 [node name="ScoreGUI" type="Control" unique_id=405849922]
 layout_mode = 3
@@ -12,51 +17,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q7jbj")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=15899561]
-layout_mode = 1
-offset_right = 215.0
-offset_bottom = 50.0
-
-[node name="LifeVbox" type="VBoxContainer" parent="HBoxContainer2" unique_id=700237836]
-layout_mode = 2
-
-[node name="lifeLabel" type="Label" parent="HBoxContainer2/LifeVbox" unique_id=1534690049]
-layout_mode = 2
-text = "Lives"
-
-[node name="lifePlayer" type="Label" parent="HBoxContainer2/LifeVbox" unique_id=213767677]
-layout_mode = 2
-
-[node name="TimerVbox" type="VBoxContainer" parent="HBoxContainer2" unique_id=582231576]
-layout_mode = 2
-
-[node name="TimerLabel" type="Label" parent="HBoxContainer2/TimerVbox" unique_id=494700573]
-layout_mode = 2
-text = "Timer"
-
-[node name="TimerPlayer" type="Label" parent="HBoxContainer2/TimerVbox" unique_id=1497111196]
-layout_mode = 2
-
-[node name="ScoreVBOX" type="VBoxContainer" parent="HBoxContainer2" unique_id=941686724]
-layout_mode = 2
-
-[node name="ScoreLabel" type="Label" parent="HBoxContainer2/ScoreVBOX" unique_id=793234032]
-layout_mode = 2
-text = "Score"
-
-[node name="ScorePlayer" type="Label" parent="HBoxContainer2/ScoreVBOX" unique_id=301841165]
-layout_mode = 2
-
-[node name="MultVbox" type="VBoxContainer" parent="HBoxContainer2" unique_id=2000335886]
-layout_mode = 2
-
-[node name="MultLabel" type="Label" parent="HBoxContainer2/MultVbox" unique_id=834596712]
-layout_mode = 2
-text = "Multiplier"
-
-[node name="MultPlayer" type="Label" parent="HBoxContainer2/MultVbox" unique_id=590099083]
-layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1747796993]
 layout_mode = 1
@@ -100,3 +60,50 @@ texture = ExtResource("3_41ao1")
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("3_41ao1")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1012500575]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -226.0
+offset_top = -210.0
+offset_bottom = -121.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("4_3pkni")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1032981624]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1218318687]
+layout_mode = 2
+alignment = 1
+
+[node name="XLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=746243188]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6t07p")
+theme_override_font_sizes/font_size = 64
+text = "X"
+
+[node name="MultLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=775743148]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6t07p")
+theme_override_font_sizes/font_size = 32
+text = "32"
+vertical_alignment = 2
+
+[node name="Score" type="Label" parent="PanelContainer/VBoxContainer" unique_id=222655880]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6t07p")
+theme_override_font_sizes/font_size = 24
+text = "32"
+vertical_alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer" unique_id=217425430]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_3pkni")
+value = 50.0
+show_percentage = false

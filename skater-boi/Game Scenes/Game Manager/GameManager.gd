@@ -8,6 +8,17 @@ var current3d
 var current2d
 var currentgui
 
+# High Scores
+var sessionwords:int = 0
+var sessionScore:int = 0
+var sessionMult:int = 0
+
+var highwords:int = 0
+var highScore:int = 0
+var highMult:int = 0
+var highRank: String
+
+
 # Word list
 var wordlist = load("res://Scripts/WordLists/words.tres")
 
